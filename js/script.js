@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", function() {
+  const button = document.getElementById("myButton");
+  if (button) {
+    button.onclick = function() {
+      alert("Button clicked!");
+    };
+  }
+});
+
+
 // Toggle class active untuk hamburger menu
 const navbarNav = document.querySelector('.navbar-nav');
 // ketika hamburger menu di klik
