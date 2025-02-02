@@ -87,17 +87,21 @@ body {
 
 /* Navbar search form */
 .navbar .search-form {
+  display: none; /* Sembunyikan tab pencarian di awal */
   position: absolute;
-  top: 100%;
-  right: 7%;
-  background-color: #fff;
-  width: 50rem;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: 0.3s;
+  top: 60px; /* Atur posisi di bawah ikon */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Saat tombol search diklik, tab pencarian muncul */
+.search-form.active {
+  display: block;
 }
 
 .navbar .search-form.active {
@@ -730,10 +734,14 @@ footer .credit a {
   }
 }
 
-@media (max-width: 450px) {
-  html {
-    font-size: 55%;
+@media (max-width: 768px) { /* Hanya untuk layar kecil (tablet & HP) */
+  .search-container input {
+      display: none;
   }
+  .search-container.show input {
+      display: block;
+  }
+
 
   /* Menyesuaikan navbar untuk tampilan ponsel */
   .navbar {
