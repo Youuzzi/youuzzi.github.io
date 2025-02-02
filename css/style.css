@@ -247,16 +247,16 @@ body {
 
 /* Hero Section */
 .hero {
-  min-height: 100vh;
+  min-height: 100vh; /* Tinggi default untuk PC */
   display: flex;
   align-items: center;
   background-image: url('../img/pq.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; /* Gambar menutupi area */
   background-position: center;
   position: relative;
-
 }
+
 
  .hero::after {
   content: '';
@@ -646,9 +646,9 @@ footer .credit a {
 }
 
 /* Tablet */
-@media (max-width: 758px) {
-  html {
-    font-size: 62.5%;
+@media (max-width: 768px) {
+  .hero {
+      min-height: 60vh; /* Sesuaikan tinggi untuk tablet */
   }
 
   #hamburger-menu {
