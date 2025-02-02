@@ -712,9 +712,27 @@ footer .credit a {
   }
 }
 
-/* Mobile Phone */
 @media (max-width: 450px) {
   html {
     font-size: 55%;
+  }
+
+  /* Menyesuaikan navbar untuk tampilan ponsel */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  /* Menyesuaikan ukuran dan visibilitas tombol pencarian */
+  .navbar .search-form {
+    width: 90%;
+    right: 2rem;
+    transform: scaleY(1);
+  }
+
+  /* Menyesuaikan ukuran dan posisi shopping cart */
+  #shopping-cart-button {
+    font-size: 1.2rem;
   }
 }
