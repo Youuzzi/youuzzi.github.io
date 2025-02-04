@@ -734,9 +734,10 @@ footer .credit a {
   }
 }
 
-@media (max-width: 768px) { /* Hanya untuk layar kecil (tablet & HP) */
-  .search-container input {
-      display: none;
+/* Mobile Phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
   }
   .search-container.show input {
       display: block;
