@@ -244,6 +244,10 @@ body {
   margin: 1rem auto;
   cursor: pointer;
 }
+.form-container .checkout-button.disabled{
+  background-color: #ddd;
+  cursor: not-allowed;
+}
 
 /* Hero Section */
 .hero {
@@ -618,6 +622,7 @@ footer .credit a {
   margin-top: 1rem;
   padding: 1rem 1.6rem;
 }
+
 
 /* Media Queries */
 /* Laptop */

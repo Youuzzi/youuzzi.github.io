@@ -6,7 +6,20 @@ document.addEventListener('alpine:init', () => {
             { id: 3, name: 'Primo Passo', img: '3.jpg', price: 30000 },
             { id: 4, name: 'Liberica', img: '4.jpg', price: 35000 },
             { id: 5, name: 'Excelsa', img: '5.jpg', price: 45000 }
-        ]
+        ],
+        selectedItem: null,
+        showItemDetail(item) {
+            // Set item yang dipilih
+            this.selectedItem = item;
+
+            // Buka modal dan tampilkan detail item
+            const modal = document.getElementById('item-detail-modal');
+            modal.style.display = 'flex';
+        },
+        closeModal() {
+            const modal = document.getElementById('item-detail-modal');
+            modal.style.display = 'none';
+        }
     }));
 
     Alpine.store('cart', {
@@ -15,7 +28,7 @@ document.addEventListener('alpine:init', () => {
         quantity: 0,
         add(newItem) {
             // Cek Apakah ada barang yang sama di cart
-            const cartItem = this.items.find((item) => item.id === newItem.id);
+            const cartItem = this.items.find(item => item.id === newItem.id);
 
             // Jika belum ada / cart masih kosong
             if (!cartItem) {
@@ -24,8 +37,7 @@ document.addEventListener('alpine:init', () => {
                 this.total += newItem.price;
             } else {
                 // Jika barang sudah ada, tambah quantity dan totalnya
-                this.items = this.items.map((item) => {
-                    // Jika Barang Berbeda
+                this.items = this.items.map(item => {
                     if (item.id !== newItem.id) {
                         return item;
                     } else {
@@ -41,13 +53,13 @@ document.addEventListener('alpine:init', () => {
 
         remove(id) {
             // Ambil item yang mau diremove berdasarkan idnya
-            const cartItem = this.items.find((item) => item.id === id);
+            const cartItem = this.items.find(item => item.id === id);
+
+            if (!cartItem) return; // Error handling jika item tidak ditemukan
 
             // Jika item lebih dari 1
             if (cartItem.quantity > 1) {
-                // Kurangi satu per satu
-                this.items = this.items.map((item) => {
-                    // Jika bukan barang yang di klik
+                this.items = this.items.map(item => {
                     if (item.id !== id) {
                         return item;
                     } else {
@@ -58,9 +70,9 @@ document.addEventListener('alpine:init', () => {
                         return item;
                     }
                 });
-            } else if (cartItem.quantity === 1) { // Perbaikan: menggunakan === untuk perbandingan
+            } else {
                 // Jika barangnya sisa 1
-                this.items = this.items.filter((item) => item.id !== id); // Perbaikan: gunakan 'items' bukan 'item'
+                this.items = this.items.filter(item => item.id !== id);
                 this.quantity--;
                 this.total -= cartItem.price;
             }
@@ -73,6 +85,6 @@ const rupiah = (number) => {
     return new Intl.NumberFormat('id-ID', {
         style: 'currency',
         currency: 'IDR',
-        minimumFractionDigits: 0,
+        minimumFractionDigits: 0
     }).format(number);
 };
