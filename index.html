@@ -179,8 +179,6 @@
 <section class="products" id="products" x-data="products">
   <h2><span>Produk Unggulan</span> Kami</h2>
   <p>Dari Biji Kopi Pilihan.</p>
-
-  <div class="row">
     <template x-for="(item, index) in items" :key="index">
       <div class="product-card">
         <div class="product-icons">
@@ -198,7 +196,6 @@
             </svg>
           </a>
         </div>
-        
         <div class="product-image">
           <img :src="`img/product/${item.img}`" :alt="item.name">
         </div>
@@ -307,7 +304,8 @@
       </a>
       <div class="modal-content">
           <!-- Gambar Produk -->
-          <img :src="`img/product/${selectedItem.img}`" :alt="selectedItem.name" style="width: 100%;">
+          <img id="modal-image" src="" alt="Detail Produk">
+          <p>Pokonya Enak: <span x-text="selectedItem ? selectedItem.img : 'kosong'"></span></p>
 
           <!-- Konten Produk -->
           <div class="product-content">

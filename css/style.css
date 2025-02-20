@@ -579,6 +579,88 @@ footer .credit a {
   animation: animateModal 0.5s;
 }
 
+/* -- MODAL WRAPPER -- */
+#item-detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none; /* Diubah ke 'flex' melalui JS saat modal dibuka */
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+/* -- MODAL CONTAINER -- */
+#item-detail-modal .modal-container {
+  background-color: #fff;
+  max-width: 900px; /* Atur lebar maksimal modal */
+  width: 90%;
+  border-radius: 8px;
+  display: flex;
+  gap: 20px; /* Jarak antar elemen kiri-kanan */
+  padding: 20px;
+  position: relative; /* Untuk posisi tombol close */
+}
+
+/* -- CLOSE ICON -- */
+#item-detail-modal .close-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+/* -- GAMBAR DI MODAL -- */
+#item-detail-modal img#modal-image {
+  width: 100%;
+  max-width: 400px; /* Atur lebar gambar */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover; /* Memastikan gambar rapi */
+}
+
+/* -- KONTEN PRODUK (SEBELAH KANAN) -- */
+#item-detail-modal .product-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Tambahkan padding jika perlu */
+}
+
+/* -- STYLE RATING / BINTANG -- */
+#item-detail-modal .product-stars {
+  margin: 1rem 0;
+  display: flex;
+  gap: 4px;
+  color: var(--primary);
+}
+
+/* -- TOMBOL ADD TO CART -- */
+#item-detail-modal .product-content a {
+  display: inline-block;
+  background-color: #b38b59; /* Contoh warna coklat kopi */
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: background 0.3s ease;
+}
+
+#item-detail-modal .product-content a:hover {
+  background-color: #9c784d;
+}
+.product-content p span {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+
 /* Modal Animation */
 @keyframes animateModal {
   from {

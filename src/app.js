@@ -1,18 +1,24 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('products', () => ({
         items: [
-            { id: 1, name: 'Robusta Brazil', img: '1.jpg', price: 20000 },
-            { id: 2, name: 'Arabica Blande', img: '2.jpg', price: 25000 },
-            { id: 3, name: 'Primo Passo', img: '3.jpg', price: 30000 },
-            { id: 4, name: 'Liberica', img: '4.jpg', price: 35000 },
-            { id: 5, name: 'Excelsa', img: '5.jpg', price: 45000 }
+            { id: 1, name: 'Robusta Brazil', img: 'product1.JPG', price: 20000 },
+            { id: 2, name: 'Arabica Blande', img: 'product2.jpg', price: 25000 },
+            { id: 3, name: 'Primo Passo', img: 'product3.jpg', price: 30000 },
+            { id: 4, name: 'Liberica', img: 'product4.jpg', price: 35000 },
+            { id: 5, name: 'Excelsa', img: 'product5.jpg', price: 45000 }
         ],
         selectedItem: null,
         showItemDetail(item) {
-            // Set item yang dipilih
+            console.log('showItemDetail dipanggil:', item);
+            console.log('item.img:', item.img);
             this.selectedItem = item;
+            
+            this.$nextTick(() => {
+                const modalImage = document.getElementById('modal-image');
+                modalImage.src = `img/product/${item.img}`;
+              });
 
-            // Buka modal dan tampilkan detail item
+            // Buka modal
             const modal = document.getElementById('item-detail-modal');
             modal.style.display = 'flex';
         },
