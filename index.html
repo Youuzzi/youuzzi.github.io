@@ -299,13 +299,15 @@
  <!-- Modal Detail Produk -->
 <div class="modal" id="item-detail-modal" x-show="selectedItem" style="display: none;">
   <div class="modal-container">
-      <a href="#" class="close-icon" @click="closeModal()">
+      <!-- Tombol Close -->
+      <button class="close-button" @click="closeModal()">
           <i data-feather="x"></i>
-      </a>
+      </button>
+      
       <div class="modal-content">
           <!-- Gambar Produk -->
           <img id="modal-image" src="" alt="Detail Produk">
-          <p>Pokonya Enak: <span x-text="selectedItem ? selectedItem.img : 'kosong'"></span></p>
+          <p>Pokonya Enak<span x-text="selectedItem ? selectedItem.img : 'kosong'"></span></p>
 
           <!-- Konten Produk -->
           <div class="product-content">
@@ -341,13 +343,11 @@
                   <span x-text="rupiah(selectedItem.price)"></span>
               </div>
 
-              
-                  <!-- Tombol Tambah ke Keranjang -->
-                  <a href="#" @click="$store.cart.add(selectedItem)">
-                    <i data-feather="shopping-cart"></i> 
-                    <span>Add to Cart</span>
-                </a>
-            </div>
+              <!-- Tombol Tambah ke Keranjang -->
+              <a href="#" @click="$store.cart.add(selectedItem)">
+                  <i data-feather="shopping-cart"></i> 
+                  <span>Add to Cart</span>
+              </a>
           </div>
       </div>
   </div>

@@ -53,20 +53,23 @@ document.addEventListener('click', function (e) {
   }
 });
 
-// Modal Box
-const itemDetailModal = document.querySelector ('#item-detail-modal');
-const itemDetailButtons = document.querySelectorAll('.item-detail-button');
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('item-detail-modal');
+  const modalContainer = modal.querySelector('.modal-container');
 
-itemDetailButtons.forEach((btn) => {
-  btn.onclick = (e) => {
-    itemDetailModal.style.display = 'flex';
-    e.preventDefault();
-  };
+  // Fungsi untuk menutup modal
+  function closeModal() {
+      modal.style.display = 'none';
+  }
+
+  // Event listener untuk menutup modal saat mengklik di luar area modal
+  modal.addEventListener('click', function(event) {
+      if (event.target === modal) {
+          closeModal();
+      }
+  });
+
+  // Event listener untuk tombol close
+  const closeButton = modal.querySelector('.close-button');
+  closeButton.addEventListener('click', closeModal);
 });
-
-// Klik tombol close modal
-document.querySelector('.modal .close-icon').onclick = (e) => {
-  document.getElementById('item-detail-modal').style.display = 'none';
-  e.preventDefault();
-};
-
